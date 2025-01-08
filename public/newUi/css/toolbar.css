@@ -1,0 +1,237 @@
+
+.toolbar-btn-primary, .btn-primary {
+    background-color: hsl(222, 100%, 53%);
+    color: white;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    margin: .2rem;
+}
+
+
+.toolbar-btn-primary:hover, .btn-primary:hover {
+    background-color: hsl(222, 100%, 53%) !important;
+    opacity: 0.9 !important;
+}
+.toolbar-btn-outline-secondary, .btn-outline-secondary {
+    background-color: hsla(0, 0%, 37%, 0);
+    color: rgb(123, 123, 123) !important;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid hsl(0, 0%, 37%);
+    margin: .2rem;
+}
+
+.toolbar-btn-outline-secondary:hover, .btn-outline-secondary:hover{
+    background-color: hsl(0, 0%, 33%) !important;
+    opacity: 0.9 !important;
+    color: #fff !important;
+}
+.toolbar-btn-secondary, .btn-secondary {
+    background-color: hsl(0, 0%, 37%);
+    color: white;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    margin: .2rem;
+}
+
+.toolbar-btn-secondary:hover, .btn-secondary:hover {
+    background-color: hsl(0, 0%, 33%) !important;
+    opacity: 0.9 !important;
+}
+.toolbar-btn-outline-info, .btn-outline-info  {
+    background-color: rgba(59, 220, 241, 0);
+    color: rgb(64, 236, 245) !important;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid rgb(64, 236, 245);
+    margin: .2rem;
+}
+
+.toolbar-btn-outline-info:hover, .btn-outline-info:hover {
+  background-color: rgb(64, 236, 245);
+  color: rgb(255, 255, 255) !important;
+  opacity: 0.9 !important;
+}
+
+.toolbar-btn-outline-primary, .btn-outline-primary {
+    background-color: hsla(222, 58%, 90%, 0);
+    color: rgb(57, 60, 255) !important;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid rgb(57, 60, 255);
+    margin: .2rem;
+}
+
+.toolbar-btn-outline-primary:hover, .btn-outline-primary:hover {
+    background-color: rgb(57, 60, 255) !important;
+    opacity: 0.9 !important;
+    color: #fff !important;
+}
+.toolbar-btn-outline-success, .btn-outline-success {
+    background-color: hsla(222, 58%, 90%, 0);
+    color: rgb(20, 123, 35) !important;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid rgb(20, 123, 35);
+    margin: .2rem;
+}
+
+.toolbar-btn-outline-success:hover, .btn-outline-success:hover {
+    background-color: rgb(20, 123, 35)!important;
+    color: #fff !important;
+    opacity: 0.9 !important;
+}
+.toolbar-btn-outline-warning, .btn-outline-warning {
+    background-color: hsla(222, 58%, 90%, 0);
+    color: rgb(255, 196, 57) !important;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    border: 2px solid rgb(255, 196, 57);
+    padding: 10px;
+    margin: .2rem;
+}
+
+.toolbar-btn-outline-warning:hover, .btn-outline-warning:hover {
+    background-color: rgb(255, 196, 57) !important;
+    color: #fff !important;
+    opacity: 0.9 !important;
+}
+/* Targeting ::before and ::after pseudo-elements for all button classes */
+.toolbar-btn-primary::before, .btn-primary::before,
+.toolbar-btn-primary::after, .btn-primary::after,
+.toolbar-btn-outline-secondary::before, .btn-outline-secondary::before,
+.toolbar-btn-outline-secondary::after, .btn-outline-secondary::after,
+.toolbar-btn-secondary::before, .btn-secondary::before,
+.toolbar-btn-secondary::after, .btn-secondary::after,
+.toolbar-btn-outline-info::before, .btn-outline-info::before,
+.toolbar-btn-outline-info::after, .btn-outline-info::after,
+.toolbar-btn-outline-primary::before, .btn-outline-primary::before,
+.toolbar-btn-outline-primary::after, .btn-outline-primary::after,
+.toolbar-btn-outline-success::before, .btn-outline-success::before,
+.toolbar-btn-outline-success::after, .btn-outline-success::after,
+.toolbar-btn-outline-warning::before, .btn-outline-warning::before,
+.toolbar-btn-outline-warning::after, .btn-outline-warning::after {
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Custom Styles */
+.editor-section {
+    /* padding: 20px; */
+    background-color: #f8f9fa;
+    /* border: 1px solid #dee2e6; */
+    /* margin-bottom: 10px; */
+    min-height: 300px;
+}
+
+
+
+.editor-toolbar button {
+    margin-right: 10px;
+}
+
+/* Hover effect for every element inside the editor */
+#editor * {
+    border: 1px dashed transparent;
+    color: #fff;
+}
+
+#editor {
+    color: #fff;
+}
+
+#editor *:hover {
+    border: 1px dashed lightgray;
+    cursor: pointer;
+}
+
+/* Active element has a more prominent border */
+.active-element {
+    border: 2px solid lightblue !important;
+}
+
+/* Vertical alignment */
+.align-vertical {
+    display: flex;
+    align-items: center;
+}
+
+/* Padding & Margin classes */
+.p-10 {
+    padding: 10px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center
+}
+
+.bold {
+    font-weight: bold
+}
+
+.italic {
+    font-style: italic
+}
+
+.underline {
+    text-decoration: underline
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.background-2 {
+    background-image: linear-gradient(to left, rgba(2, 202, 237, 0.42), rgba(16, 27, 55, 0.54) 80%), url('../images/bgr4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+
+.background-1 {
+    background-color: #0c152c;
+}
+
+.background-3 {
+    background-color: rgba(16, 27, 55, 0.975);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.theme-color {
+    color: #02C9ED !important;
+}
+.highlight-color {
+    color: #E16484 !important;
+}
+.text-white{
+    color: #fff !important;
+}
