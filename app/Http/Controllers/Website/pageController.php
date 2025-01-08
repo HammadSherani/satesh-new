@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use stdClass;
@@ -10,22 +11,52 @@ use stdClass;
 class pageController extends Controller
 {
     public function index()
-{
+    {
+        $categories = Category::get();
+        return view('website.index', compact('categories'));
+    }
 
-    $categories = DB::table('categories')->get();
-    return view('website.index', compact('categories'));
-}
+    function adsManage(Request $request)
+    {
+        $category = $request->category;
+        $state = $request->state;
+        $city = $request->city;
 
-public function ads()
-{
-    return view('website.ads.ads');
-}
+        if ($category && $state && $city) {
+            return redirect()->to($category . '/' . $state . '/' . $city);
+        }elseif ($category && $state) {
+            return redirect()->to($category . '/' . $state);
+        }else{
+            return redirect()->to($category);
+        }
+    }
+
+    public function ads($category, $state = null, $city = null)
+    {
+        $categoryId = DB::table('categories')->where('name', $category)->first();
+        $stateId = DB::table('states')->where('name', $state)->first();
+        $cityId = DB::table('cities')->where('name', $city)->first();
+
+        $query = DB::table('ads');
+
+        if ($categoryId) {
+            $query->where('category_id', $categoryId->id);
+        }
+        if ($stateId) {
+            $query->where('state_id', $stateId->id);
+        }
+        if ($cityId) {
+            $query->where('city_id', $cityId->id);
+        }
+        $ads = $query->get();
+        return view('website.ads.ads', compact('ads'));
+    }
 
 
-public function adsDetail()
-{
-    return view('website.ads.detail');
-}
+    public function adsDetail()
+    {
+        return view('website.ads.detail');
+    }
 
 
     public function blogs()
@@ -273,11 +304,11 @@ public function adsDetail()
                 ->join('models', 'models.id', '=', 'ads.model_id')
                 ->join('states', 'states.id', '=', 'ads.state_id')
                 ->join('cities', 'cities.id', '=', 'ads.city_id')
-                ->select('ads.*', 'models.name','models.age','models.phone','models.whatsapp','states.name as state','cities.name as city')
+                ->select('ads.*', 'models.name', 'models.age', 'models.phone', 'models.whatsapp', 'states.name as state', 'cities.name as city')
                 ->where('ads.status', 1)
                 ->where('ads.slug', $slug)->first();
-            
-                if (!$data) {
+
+            if (!$data) {
                 return redirect('404');
             }
 
@@ -296,10 +327,10 @@ public function adsDetail()
                 ->latest()
                 ->take(3)->get();
 
-                $data->meta_title = "";
-                $data->meta_description = "";
-                $data->meta_keywords = "";
-            return view('website.ad-detail', compact('data', 'pages', 'locations', 'last3Blogs','services'));
+            $data->meta_title = "";
+            $data->meta_description = "";
+            $data->meta_keywords = "";
+            return view('website.ad-detail', compact('data', 'pages', 'locations', 'last3Blogs', 'services'));
         } catch (\Throwable $th) {
             // return redirect('under-development');
             return response()->json(['error' => true, 'message' => $th->getMessage()]);
