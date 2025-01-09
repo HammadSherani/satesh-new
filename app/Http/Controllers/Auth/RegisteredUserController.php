@@ -28,42 +28,40 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    use Illuminate\Support\Facades\Storage;
 
-public function store(Request $request): RedirectResponse
-{
-    // Validate the incoming request
-    $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], // Adjusted unique check for users table
-        'phone' => ['required', 'string', 'min:10', 'max:15'], // Phone validation
-        'profile_picture' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // File validation
-        'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    ]);
+    public function store(Request $request): RedirectResponse
+    {
+        // Validate the incoming request
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], // Adjusted unique check for users table
+            'phone' => ['required', 'string', 'min:10', 'max:15'], // Phone validation
+            'profile_picture' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // File validation
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
 
-    // Handle file upload
-    $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
+        // Handle file upload
+        $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
 
-    // Create the user
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'profile_picture' => $profilePicturePath, // Save file path
-        'password' => Hash::make($request->password),
-    ]);
+        // Create the user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'profile_picture' => $profilePicturePath, // Save file path
+            'password' => Hash::make($request->password),
+        ]);
 
-    // Assign default role
-    $user->assignRole('user');
+        // Assign default role
+        $user->assignRole('user');
 
-    // Fire registered event
-    event(new Registered($user));
+        // Fire registered event
+        event(new Registered($user));
 
-    // Log the user in
-    Auth::login($user);
+        // Log the user in
+        Auth::login($user);
 
-    // Redirect to the dashboard
-    return redirect('user/dashboard')->with('success', 'Registration successful!');
-}
-
+        // Redirect to the dashboard
+        return redirect('user/dashboard')->with('success', 'Registration successful!');
+    }
 }
