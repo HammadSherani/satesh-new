@@ -19,7 +19,7 @@ Route::get('logout', function () {
 });
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [HomeController::class, 'index']);
-    Route::get('users', [AdminUserController::class, 'index'])->name('users.index');
+    Route::get('users', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::get('ads', [AdminAdController::class, 'index'])->name('admin.ads.index');
 });
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->prefix('user')->group(function () {

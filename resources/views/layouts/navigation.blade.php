@@ -32,7 +32,7 @@
             {{ __('Dashboard') }}
         </x-nav-link>
         @role('admin')
-            <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+            <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                 <x-slot name="icon">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
